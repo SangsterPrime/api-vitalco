@@ -12,30 +12,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "pedidos")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pedido {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private LocalDate fechaCreacion;
+	private LocalDate fechaCreacion;
 
-    private String estado;
+	private String estado;
 
-    private String observaciones;
+	private String observaciones;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Cliente cliente;
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	private Cliente cliente;
 }

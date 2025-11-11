@@ -12,30 +12,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "inventarios")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Inventario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "producto_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Producto producto;
+	@ManyToOne
+	@JoinColumn(name = "producto_id")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	private Producto producto;
 
-    private Integer cantidadDisponible;
+	private Integer cantidadDisponible;
 
-    private String ubicacion;
+	private String ubicacion;
 
-    private LocalDateTime ultimaActualizacion;
+	private LocalDateTime ultimaActualizacion;
 }

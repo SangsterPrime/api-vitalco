@@ -10,30 +10,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "rutas_distribucion")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RutaDistribucion {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String nombre;
+	private String nombre;
 
-    private String zonaCobertura;
+	private String zonaCobertura;
 
-    private String descripcion;
+	private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "vehiculo_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Vehiculo vehiculoAsignado;
+	@ManyToOne
+	@JoinColumn(name = "vehiculo_id")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	private Vehiculo vehiculoAsignado;
 }

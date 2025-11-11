@@ -10,32 +10,30 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "empleados")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Empleado {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String nombre;
+	private String nombre;
 
-    private String rol;
+	private String rol;
 
-    private String telefono;
+	private String telefono;
 
-    private boolean activo;
+	private boolean activo;
 
-    @ManyToOne
-    @JoinColumn(name = "ruta_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private RutaDistribucion rutaAsignada;
+	@ManyToOne
+	@JoinColumn(name = "ruta_id")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	private RutaDistribucion rutaAsignada;
 }
